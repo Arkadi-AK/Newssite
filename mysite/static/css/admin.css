@@ -1,0 +1,8 @@
+header{
+    background=#90a4ae;
+    color: #fff;
+}
+
+#branding h1, #branding h1 a:link, #branding h1 a:visited {
+    color: var(--accent);
+}

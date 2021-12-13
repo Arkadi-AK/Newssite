@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login :: {{ block.super }}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+
+<h1>Вход</h1>
+
+<form method="post">
+<!--Этот токен сгенерирует специальный ключ (токен) и с ним джанго будет принимать данные из формы, без него данные не примутся-->
+    {% csrf_token %}
+<!--Элементы формы будут в параграфе-->
+
+    {{ form.as_p }}
+
+    <button type="submit" class= "btn btn-primary btn-block">Login</button>
+
+</form>
+
+{% endblock %}
+

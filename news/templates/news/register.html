@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Регистрация :: {{ block.super }}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+
+<h1>Регистрация</h1>
+
+<form method="post">
+<!--Этот токен сгенерирует специальный ключ (токен) и с ним джанго будет принимать данные из формы, без него данные не примутся-->
+    {% csrf_token %}
+<!--Элементы формы будут в параграфе-->
+    {{ form.as_p }}
+
+
+<!--    {{ form.non_field.errors }}-->
+
+    {% comment %}
+<!--    Это ручной вариант настройки форм ввода новостей на вкладке добавить новость-->
+    <div class="form-group">
+    <label for="{{ form.title.id_for_label }}">Название: </label>
+        {{ form.title }}
+        <div class="invalid-feedback">
+            {{ form.title.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
+    <label for="{{ form.content.id_for_label }}">Текст: </label>
+        {{ form.content }}
+        <div class="invalid-feedback">
+            {{ form.content.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
+
+    <label for="{{ form.is_published.id_for_label }}">Опубликовано?: </label>
+        {{ form.is_published }}
+        <div class="invalid-feedback">
+            {{ form.is_published.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
+    <label for="{{ form.category.id_for_label }}">Категория: </label>
+        {{ form.category }}
+        <div class="invalid-feedback">
+            {{ form.category.errors }}
+        </div>
+    </div>
+    {% endcomment %}
+
+    {% comment %}
+<!--    Это вариант через цикл FOR настройки форм ввода новостей на вкладке добавить новость-->
+    {% for field in form %}
+    <div class="form-group">
+        {{ field.label_tag }}
+        {{ field }}
+        <div class="invalid-feedback">
+            {{ field.errors }}
+        </div>
+    </div>
+
+
+    {% endfor %}
+    {% endcomment %}
+
+
+
+
+    <button type="submit" class= "btn btn-primary btn-block">Регистрация</button>
+
+</form>
+
+{% endblock %}
+
