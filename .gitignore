@@ -3,3 +3,4 @@
 db.sqlite3
 django_cache/
 /media/
+/SECRET_KEY.txt
